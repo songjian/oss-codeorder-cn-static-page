@@ -1,0 +1,9 @@
+name: publish-oss-actions
+on: [push]
+jobs:
+  copy-file-to-oss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: wget http://gosspublic.alicdn.com/ossutil/1.7.7/ossutil64
+      - run: chmod 755 ossutil64

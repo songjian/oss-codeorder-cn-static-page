@@ -9,5 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: wget http://gosspublic.alicdn.com/ossutil/1.7.7/ossutil64
-      - run: chmod 755 ossutil64
+      - uses: manyuanrong/setup-ossutil@v2.0
+        with:
+          endpoint: "codeorder-cn-static-page"
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
+      - run: ossutil cp index.html oss://codeorder-cn-static-page/index.html -f
